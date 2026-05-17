@@ -26,66 +26,6 @@ Any trademarks, product names or logos belong to their respective owners.
 
 The integration uses unofficial Anker Cloud and MQTT behavior. Cloud APIs, MQTT message formats, authentication and device commands may change or break at any time. Commands are intentionally limited to A2345 USB port controls that are known from the upstream Solix MQTT maps.
 
-## Phase 1 scope
-
-- UI config flow with Anker email, password and country/region.
-- Discovery and selection of compatible A2345 devices.
-- AWS IoT MQTT connection using Anker-provided certificates.
-- Subscription to A2345 MQTT topics.
-- Realtime trigger on startup and periodic refresh.
-- Automatic reconnect with exponential backoff.
-- Fallback MQTT status request when payloads stop arriving.
-- Base entities:
-  - Online status
-  - MQTT connected
-  - Last seen
-  - Last payload time
-  - Total power
-  - Realtime status
-  - MQTT reconnect count
-
-## Phase 2 scope
-
-The integration now also exposes expanded A2345 entities when the decoded MQTT payloads contain the matching fields:
-
-- USB-C 1-4:
-  - Power
-  - Voltage
-  - Current
-  - Status
-  - Active binary sensor
-- USB-A 1-2:
-  - Power
-  - Voltage
-  - Current
-  - Status
-  - Active binary sensor
-- Firmware version from cloud `main_version` or MQTT `sw_version`
-- Geräteinformationen from the A2345 mini-power device identity endpoints when Anker Cloud returns connected-device names
-- Realtime status
-- MQTT reconnect count
-- Last payload time
-
-AC outlet, WiFi/RSSI, and charging protocol entities are intentionally omitted because they do not provide useful stable values for the A2345 charger in current payload captures.
-
-## Phase 3 stability behavior
-
-The runtime now has a dedicated recovery loop for the charger:
-
-- MQTT auto-reconnect with exponential backoff up to 5 minutes.
-- Realtime trigger after every new MQTT connection.
-- Periodic realtime refresh using the configured interval.
-- Soft recovery when payloads become stale: send realtime trigger, then MQTT status request.
-- Hard recovery when stale payloads continue: rebuild MQTT session and resubscribe.
-- Offline grace period based on `last_seen`, recalculated every 30 seconds even when no new payload arrives.
-- Cloud polling fallback on the configured interval.
-- Clean unload/reload: timers are removed and the MQTT session is closed.
-- Recovery observability through:
-  - MQTT recovery count
-  - MQTT last error
-  - Last realtime trigger
-  - Last status request
-
 ## Installation with HACS
 
 1. Add this repository as a HACS custom repository.
