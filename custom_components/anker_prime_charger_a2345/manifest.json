@@ -3,14 +3,14 @@
   "name": "Anker Prime Charger (A2345)",
   "codeowners": [],
   "config_flow": true,
-  "documentation": "https://github.com/robertschneider/ha-anker-prime-charger",
+  "documentation": "https://github.com/niiconn/ha-anker-prime-charger",
   "integration_type": "device",
   "iot_class": "cloud_push",
-  "issue_tracker": "https://github.com/robertschneider/ha-anker-prime-charger/issues",
+  "issue_tracker": "https://github.com/niiconn/ha-anker-prime-charger/issues",
   "requirements": [
     "aiofiles>=23.2.0",
     "cryptography>=3.4.8",
     "paho-mqtt>=2.1.0"
   ],
-  "version": "0.1.0"
+  "version": "0.1.2"
 }
