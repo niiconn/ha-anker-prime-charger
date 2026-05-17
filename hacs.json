@@ -1,0 +1,6 @@
+{
+  "name": "Anker Prime Charger (A2345)",
+  "homeassistant": "2025.3.0",
+  "persistent_directory": "solixapi/authcache",
+  "render_readme": true
+}

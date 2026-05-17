@@ -1,0 +1,33 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Anker Prime Charger (A2345)",
+        "description": "Sign in with the Anker account that owns the A2345 charger.",
+        "data": {
+          "email": "Email",
+          "password": "Password",
+          "country": "Country/region code"
+        }
+      },
+      "device": {
+        "title": "Select charger",
+        "data": {
+          "device_sn": "Charger"
+        }
+      },
+      "manual": {
+        "title": "Add charger manually",
+        "description": "No A2345 was found automatically. Enter the charger serial number from the Anker app/device label.",
+        "data": {
+          "device_sn": "Serial number",
+          "device_name": "Name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not sign in or reach Anker Cloud.",
+      "no_compatible_devices": "No compatible Anker Prime Charger A2345 was found."
+    }
+  }
+}

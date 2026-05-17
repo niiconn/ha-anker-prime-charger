@@ -1,0 +1,101 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Anker Prime Charger (A2345)",
+        "description": "Sign in with the Anker account that owns the A2345 charger.",
+        "data": {
+          "email": "Email",
+          "password": "Password",
+          "country": "Country/region code"
+        }
+      },
+      "device": {
+        "title": "Select charger",
+        "data": {
+          "device_sn": "Charger"
+        }
+      },
+      "manual": {
+        "title": "Add charger manually",
+        "description": "No A2345 was found automatically. Enter the charger serial number from the Anker app/device label.",
+        "data": {
+          "device_sn": "Serial number",
+          "device_name": "Name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not sign in or reach Anker Cloud.",
+      "no_compatible_devices": "No compatible Anker Prime Charger A2345 was found."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Anker Prime Charger (A2345) options",
+        "data": {
+          "realtime_refresh_interval": "Realtime refresh interval",
+          "offline_timeout": "Offline timeout",
+          "mqtt_keepalive": "MQTT keepalive",
+          "polling_fallback": "Enable cloud polling fallback",
+          "polling_interval": "Polling fallback interval",
+          "debug_logging": "Enable raw MQTT debug logging",
+          "show_unknown_fields": "Show unknown payload fields"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "total_power": { "name": "Total power" },
+      "last_seen": { "name": "Last seen" },
+      "last_payload_time": { "name": "Last payload time" },
+      "firmware_version": { "name": "Firmware version" },
+      "device_information": { "name": "Geräteinformationen" },
+      "realtime_status": { "name": "Realtime status" },
+      "mqtt_reconnect_count": { "name": "MQTT reconnect count" },
+      "mqtt_recovery_count": { "name": "MQTT recovery count" },
+      "mqtt_last_error": { "name": "MQTT last error" },
+      "last_realtime_trigger": { "name": "Last realtime trigger" },
+      "last_status_request": { "name": "Last status request" },
+      "unknown_payload_field_count": { "name": "Unknown payload field count" },
+      "unknown_payload_fields": { "name": "Unknown payload fields" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online status" },
+      "mqtt_connected": { "name": "MQTT connected" }
+    }
+  }
+  ,
+  "services": {
+    "dump_last_payload": {
+      "name": "Dump last payload",
+      "description": "Write the last decoded MQTT payload to config/anker_prime_charger_a2345_last_payload.json.",
+      "fields": {
+        "device_sn": {
+          "name": "Device serial",
+          "description": "Optional A2345 serial number. Leave empty to dump all configured chargers."
+        },
+        "include_raw": {
+          "name": "Include raw envelope",
+          "description": "Include the raw MQTT envelope if debug data is available. Sensitive keys are redacted."
+        }
+      }
+    },
+    "dump_payload_history": {
+      "name": "Dump payload history",
+      "description": "Write recent decoded MQTT payloads to config/anker_prime_charger_a2345_payload_history.json.",
+      "fields": {
+        "device_sn": {
+          "name": "Device serial",
+          "description": "Optional A2345 serial number. Leave empty to dump all configured chargers."
+        },
+        "include_raw": {
+          "name": "Include raw envelope",
+          "description": "Include raw MQTT envelopes if debug data is available. Sensitive keys are redacted."
+        }
+      }
+    }
+  }
+}

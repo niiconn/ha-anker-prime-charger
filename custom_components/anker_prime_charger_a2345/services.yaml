@@ -1,0 +1,22 @@
+dump_last_payload:
+  fields:
+    device_sn:
+      required: false
+      selector:
+        text:
+    include_raw:
+      required: false
+      default: false
+      selector:
+        boolean:
+dump_payload_history:
+  fields:
+    device_sn:
+      required: false
+      selector:
+        text:
+    include_raw:
+      required: false
+      default: false
+      selector:
+        boolean:
