@@ -20,14 +20,7 @@ jobs:
       - name: Validate release tag matches manifest version
         run: |
           TAG_VERSION="${GITHUB_REF_NAME#v}"
-          MANIFEST_VERSION="$(python3 - <<'PY'
-import json
-from pathlib import Path
-
-manifest = Path("custom_components/anker_prime_charger_a2345/manifest.json")
-print(json.loads(manifest.read_text(encoding="utf-8"))["version"])
-PY
-          )"
+          MANIFEST_VERSION="$(python3 -c 'import json; print(json.load(open("custom_components/anker_prime_charger_a2345/manifest.json", encoding="utf-8"))["version"])')"
 
           if [ "$TAG_VERSION" != "$MANIFEST_VERSION" ]; then
             echo "Tag version $TAG_VERSION does not match manifest version $MANIFEST_VERSION"
@@ -45,19 +38,19 @@ PY
 
       - name: Build release notes
         run: |
-          cat > release-notes.md <<'EOF'
-## Anker Prime Charger (A2345)
-
-HACS release for the Anker Prime Charger A2345 / 250W Desktop Charger custom integration.
-
-### Installation
-
-Add this repository to HACS as a custom integration repository and install the released version.
-
-### Notes
-
-This integration uses unofficial Anker Cloud and MQTT behavior. APIs and payloads may change without notice.
-EOF
+          printf '%s\n' \
+            '## Anker Prime Charger (A2345)' \
+            '' \
+            'HACS release for the Anker Prime Charger A2345 / 250W Desktop Charger custom integration.' \
+            '' \
+            '### Installation' \
+            '' \
+            'Add this repository to HACS as a custom integration repository and install the released version.' \
+            '' \
+            '### Notes' \
+            '' \
+            'This integration uses unofficial Anker Cloud and MQTT behavior. APIs and payloads may change without notice.' \
+            > release-notes.md
 
       - name: Create GitHub release
         env:
