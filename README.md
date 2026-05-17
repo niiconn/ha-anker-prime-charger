@@ -26,6 +26,16 @@ Any trademarks, product names or logos belong to their respective owners.
 
 The integration uses unofficial Anker Cloud and MQTT behavior. Cloud APIs, MQTT message formats, authentication and device commands may change or break at any time. Commands are intentionally limited to A2345 USB port controls that are known from the upstream Solix MQTT maps.
 
+## Brand Images
+
+This repository ships local Home Assistant brand images in:
+
+```text
+custom_components/anker_prime_charger_a2345/brand/
+```
+
+The icon and logo are original project artwork. They do not use official Anker logo assets.
+
 ## Installation with HACS
 
 1. Add this repository as a HACS custom repository.
