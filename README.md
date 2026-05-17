@@ -46,6 +46,24 @@ The icon and logo are original project artwork. They do not use official Anker l
 
 Use a separate Anker account where possible. Anker Cloud sessions can be sensitive to concurrent app and integration logins.
 
+## Releases
+
+HACS uses GitHub releases for versioned installs.
+
+To publish a new release:
+
+1. Update `version` in `custom_components/anker_prime_charger_a2345/manifest.json`.
+2. Commit the change.
+3. Create and push a matching tag, for example:
+
+```bash
+git tag v0.1.0
+git push origin main
+git push origin v0.1.0
+```
+
+The GitHub Actions release workflow validates the integration and creates the GitHub release. The tag version must match the `manifest.json` version.
+
 ## Manual Installation
 
 Copy the integration folder into Home Assistant:
