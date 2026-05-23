@@ -1,7 +1,9 @@
 {
   "domain": "anker_prime_charger_a2345",
   "name": "Anker Prime Charger (A2345)",
-  "codeowners": [],
+  "codeowners": [
+    "@niiconn"
+  ],
   "config_flow": true,
   "documentation": "https://github.com/niiconn/ha-anker-prime-charger",
   "integration_type": "device",
